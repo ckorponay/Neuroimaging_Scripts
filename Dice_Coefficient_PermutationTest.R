@@ -1,5 +1,5 @@
 
-###Import the binary mask files that demarcate the voxels that surpassed the laterality "outlier threshold" for each group
+###Import the binary mask files whose overlap you want to assess
 
 d1 <- read.table(file="OutlierThresh_mask_Discovery_rStriatum.csv", header=F, sep=",")
 d2 <- read.table(file="OutlierThresh_mask_Replication_rStriatum.csv", header=F, sep=",")
@@ -10,7 +10,7 @@ d6 <- read.table(file="OutlierThresh_mask_Replication_lStriatum.csv", header=F, 
 d7 <- read.table(file="OutlierThresh_mask_AAL_lStriatum.csv", header=F, sep=",")
 d8 <- read.table(file="OutlierThresh_mask_Lefty_lStriatum.csv", header=F, sep=",")
 
-###Calculate real Dice coefficient between two of the mask images####
+###Calculate the actual Dice coefficient between two of the mask images####
 Voxels_in_A <- sum(d6)
 Voxels_in_B <- sum(d7)
 Intersection <- d6+d7
@@ -19,7 +19,7 @@ Intersection2 <- Intersection == 2
 
 Dice <- 2*sum(Intersection2)/(Voxels_in_A+Voxels_in_B)
 
-####Permutation Test######
+####Permutation Test: on each iteraction, randomly scramble the voxel locations of one mask, and calculate the new Dice coefficient; repeat P times, and create a distribution of each iteration's Dice coefficents######
 set.seed(1977)  
 
 P <- 10000 
