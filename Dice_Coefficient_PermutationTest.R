@@ -1,16 +1,13 @@
+### PURPOSE: given two clusters of voxels, quantify their overlap (using the Dice coefficient), and then assess the statistical significance of their overlap using permutation testing ######
+
 
 ###Import the binary mask files whose overlap you want to assess
 
-d1 <- read.table(file="OutlierThresh_mask_Discovery_rStriatum.csv", header=F, sep=",")
-d2 <- read.table(file="OutlierThresh_mask_Replication_rStriatum.csv", header=F, sep=",")
-d3 <- read.table(file="OutlierThresh_mask_AAL_rStriatum.csv", header=F, sep=",")
-d4 <- read.table(file="OutlierThresh_mask_Lefty_rStriatum.csv", header=F, sep=",")
-d5 <- read.table(file="OutlierThresh_mask_Discovery_lStriatum.csv", header=F, sep=",")
-d6 <- read.table(file="OutlierThresh_mask_Replication_lStriatum.csv", header=F, sep=",")
-d7 <- read.table(file="OutlierThresh_mask_AAL_lStriatum.csv", header=F, sep=",")
-d8 <- read.table(file="OutlierThresh_mask_Lefty_lStriatum.csv", header=F, sep=",")
+d6 <- read.table(file="Voxel_Cluster_1.csv", header=F, sep=",")
+d7 <- read.table(file="Voxel_Cluster_2.csv", header=F, sep=",")
 
-###Calculate the actual Dice coefficient between two of the mask images####
+
+###Calculate the actual Dice coefficient between the two mask images####
 Voxels_in_A <- sum(d6)
 Voxels_in_B <- sum(d7)
 Intersection <- d6+d7
